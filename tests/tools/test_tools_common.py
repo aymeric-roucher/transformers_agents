@@ -27,14 +27,15 @@ if is_vision_available():
     from PIL import Image
 
 
-authorized_types = {
-    'text': (AgentText, str),
-    'audio': (AgentAudio,),
-    'image': (AgentImage,),
-}
 
 
 def is_authorized_type(_type):
+    authorized_types = {
+        'text': (AgentText, str),
+        'audio': (AgentAudio,),
+        'image': (AgentImage, Image.Image),
+    }
+
     for authorized_type in authorized_types.values():
         if _type in authorized_type:
             print(_type, 'is in', authorized_type)
